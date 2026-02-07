@@ -17,6 +17,17 @@
         <div id="app"></div>
         <template id="template">
             <h1>Your TODO List here!</h1>
+            <p>Tasks Completed: {{tasks.filter((task) => task.done).length}}</p>
+            <ul>
+                <li v-for="(task, index) in tasks">
+                    <input type="checkbox" v-model="task.done" />
+                    <input type="text" v-model="task.title" />
+                    <button @click="deleteItem(index)">X</button>
+                </li>
+
+                <button @click="addItem()">Add Item</button>
+                <button @click="clearCompleted()">Clear Completed</button>
+            </ul>
         </template>
     </body>
 </html>
